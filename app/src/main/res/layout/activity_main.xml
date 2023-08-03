@@ -8,12 +8,13 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/fondo2"
-        android:scaleType="centerCrop"
         android:contentDescription="ficha"
-        tools:ignore="HardcodedText"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo2"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tv_j1"
@@ -40,9 +41,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="#002196F3"
+        android:contentDescription="ficha"
         android:padding="8dp"
         android:shadowColor="#2196F3"
-        android:text="J1: 0"
+        android:text="J2: 0"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold|italic"
@@ -50,8 +52,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="ficha"
-        tools:ignore="HardcodedText"/>
+        tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/ib_sonido"
@@ -76,11 +77,9 @@
         android:layout_marginTop="240dp"
         android:layout_marginEnd="8dp"
         android:orientation="vertical"
-        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,9 +92,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
 
             <ImageView
                 android:id="@+id/iv_12"
@@ -103,9 +102,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn"/>
 
             <ImageView
                 android:id="@+id/iv_13"
@@ -113,9 +112,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
 
             <ImageView
                 android:id="@+id/iv_14"
@@ -123,9 +122,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
         </LinearLayout>
 
         <LinearLayout
@@ -139,9 +138,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
 
             <ImageView
                 android:id="@+id/iv_22"
@@ -149,9 +148,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
 
             <ImageView
                 android:id="@+id/iv_23"
@@ -159,9 +158,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
 
             <ImageView
                 android:id="@+id/iv_24"
@@ -169,9 +168,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
         </LinearLayout>
 
         <LinearLayout
@@ -185,9 +184,9 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
 
             <ImageView
                 android:id="@+id/iv_32"
@@ -195,9 +194,9 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
 
             <ImageView
                 android:id="@+id/iv_33"
@@ -205,9 +204,9 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
 
             <ImageView
                 android:id="@+id/iv_34"
@@ -215,9 +214,9 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:contentDescription="ficha"
-
+                android:onClick="seleccionar"
                 tools:ignore="HardcodedText"
-                tools:srcCompat="@drawable/tiburonn" />
+                android:src="@drawable/tiburonn" />
         </LinearLayout>
 
     </LinearLayout>

@@ -18,28 +18,28 @@ import android.content.Intent
 class MainActivity : AppCompatActivity() {
 
     //<editor-fold desc="IMAGENES">
-    lateinit var iv_11:ImageView
-    lateinit var iv_12:ImageView
-    lateinit var iv_13:ImageView
-    lateinit var iv_14:ImageView
+    lateinit var iv_11: ImageView
+    lateinit var iv_12: ImageView
+    lateinit var iv_13: ImageView
+    lateinit var iv_14: ImageView
 
-    lateinit var iv_21:ImageView
-    lateinit var iv_22:ImageView
-    lateinit var iv_23:ImageView
-    lateinit var iv_24:ImageView
+    lateinit var iv_21: ImageView
+    lateinit var iv_22: ImageView
+    lateinit var iv_23: ImageView
+    lateinit var iv_24: ImageView
 
-    lateinit var iv_31:ImageView
-    lateinit var iv_32:ImageView
-    lateinit var iv_33:ImageView
-    lateinit var iv_34:ImageView
+    lateinit var iv_31: ImageView
+    lateinit var iv_32: ImageView
+    lateinit var iv_33: ImageView
+    lateinit var iv_34: ImageView
 
     //</editor-fold>
 
     //<editor-fold desc="OTROS">
-    lateinit var tv_j1:TextView
-    lateinit var tv_j2:TextView
+    lateinit var tv_j1: TextView
+    lateinit var tv_j2: TextView
 
-    lateinit var ib_sonido:ImageButton
+    lateinit var ib_sonido: ImageButton
 
     lateinit var mp: MediaPlayer
     lateinit var mpFondo: MediaPlayer
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     //<editor-fold desc="VARIABLES">
     var imagenesArray =
-        arrayOf(11,12,13,14,15,16, 21,22,23,24,25,26)
+        arrayOf(11, 12, 13, 14, 15, 16, 21, 22, 23, 24, 25, 26)
     var pibe = 0
     var toloteli = 0
     var teofilo = 0
@@ -68,8 +68,257 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        enlazarGui()
+    }
+    private fun enlazarGui() {
+        iv_11 = findViewById(R.id.iv_11)
+        iv_12 = findViewById<ImageView>(R.id.iv_12)
+        iv_13 = findViewById<ImageView>(R.id.iv_13)
+        iv_14 = findViewById<ImageView>(R.id.iv_14)
+        iv_21 = findViewById<ImageView>(R.id.iv_21)
+        iv_22 = findViewById<ImageView>(R.id.iv_22)
+        iv_23 = findViewById<ImageView>(R.id.iv_23)
+        iv_24 = findViewById<ImageView>(R.id.iv_24)
+        iv_31 = findViewById<ImageView>(R.id.iv_31)
+        iv_32 = findViewById<ImageView>(R.id.iv_32)
+        iv_33 = findViewById<ImageView>(R.id.iv_33)
+        iv_34 = findViewById<ImageView>(R.id.iv_34)
+
+
+        ib_sonido = findViewById<ImageButton>(R.id.ib_sonido)
+
+        ib_sonido.setColorFilter(Color.GREEN)
+        sonido("background", true)
+
+        iv_11.tag = "0"
+        iv_12.tag = "1"
+        iv_13.tag = "2"
+        iv_14.tag = "3"
+        iv_21.tag = "4"
+        iv_22.tag = "5"
+        iv_23.tag = "6"
+        iv_24.tag = "7"
+        iv_31.tag = "8"
+        iv_32.tag = "9"
+        iv_33.tag = "10"
+        iv_34.tag = "11"
+
+        pibe = R.drawable.pibe10
+        cariaco = R.drawable.cariaco
+        teofilo = R.drawable.teo9
+        toloteli = R.drawable.toloteli
+        viera = R.drawable.v10
+        escudo = R.drawable.jujuescu88
+
+        imagenesArray.shuffle()
+
+        tv_j1 = findViewById<TextView>(R.id.tv_j1)
+        tv_j2 = findViewById<TextView>(R.id.tv_j2)
+        tv_j2.setTextColor(Color.GRAY)
+        tv_j1.setTextColor(Color.WHITE)
+
+
+    }
+
+    private fun sonido(sonidoName: String, loop: Boolean=false) {
+        var resID = resources.getIdentifier(
+            sonidoName, "raw",packageName
+        )
+        if(sonidoName == "background"){
+            mpFondo = MediaPlayer.create(this, resID)
+            mpFondo.isLooping = loop
+            mpFondo.setVolume(0.04F, 0.04F)
+            if(!mpFondo.isPlaying){
+                mpFondo.start()
+            }
+        } else {
+            mp = MediaPlayer.create(this, resID)
+            mp.setOnCompletionListener(MediaPlayer.OnCompletionListener { mediaPlayer ->
+                mediaPlayer.stop()
+                mediaPlayer.release()
+            })
+            if(!mp.isPlaying){
+                mp.start()
+            }
+        }
+    }
+
+    fun musicaFondo(v: View){
+        if(escuchar){
+            mpFondo.pause()
+            ib_sonido.setImageResource(R.drawable.ic_volume_off)
+            ib_sonido.setColorFilter(Color.GRAY)
+        } else {
+            mpFondo.start()
+            ib_sonido.setImageResource(R.drawable.ic_volumen_on)
+            ib_sonido.setColorFilter(Color.GREEN)
+        }
+        escuchar = !escuchar
+    }
+
+    fun seleccionar(imagen: View){
+        sonido("touch")
+        verificar(imagen)
+    }
+
+    private fun verificar(imagen: View) {
+        var iv=(imagen as ImageView)
+        var tag = imagen.tag.toString().toInt()
+        if(imagenesArray[tag]==11){
+            iv.setImageResource(pibe)
+        } else if(imagenesArray[tag]==12){
+            iv.setImageResource(cariaco)
+        } else if(imagenesArray[tag]==13){
+            iv.setImageResource(teofilo)
+        } else if(imagenesArray[tag]==14){
+            iv.setImageResource(toloteli)
+        } else if(imagenesArray[tag]==14){
+            iv.setImageResource(toloteli)
+        } else if(imagenesArray[tag]==15){
+            iv.setImageResource(viera)
+        } else if(imagenesArray[tag]==16){
+            iv.setImageResource(escudo)
+        } else if(imagenesArray[tag]==21){
+            iv.setImageResource(pibe)
+        } else if(imagenesArray[tag]==22){
+            iv.setImageResource(cariaco)
+        } else if(imagenesArray[tag]==23){
+            iv.setImageResource(teofilo)
+        } else if(imagenesArray[tag]==24){
+            iv.setImageResource(toloteli)
+        } else if(imagenesArray[tag]==24){
+            iv.setImageResource(toloteli)
+        } else if(imagenesArray[tag]==25){
+            iv.setImageResource(viera)
+        } else if(imagenesArray[tag]==26){
+            iv.setImageResource(escudo)
+        }
+
+        //guardar temporalmente imagen seleccionada
+        if(numeroImagen==1){
+            imagen1 = iv
+            numeroImagen =  2
+            iv.isEnabled = false
+        } else if(numeroImagen==2){
+            imagen2 = iv
+            numeroImagen =  1
+            iv.isEnabled = false
+
+            deshabilitarImagenes()
+            val h = Handler(Looper.getMainLooper())
+            h.postDelayed({sonImagenesIguales()}, 1000)
+        }
+
+    }
+
+    private fun deshabilitarImagenes() {
+        iv_11.isEnabled = false
+        iv_12.isEnabled = false
+        iv_13.isEnabled = false
+        iv_14.isEnabled = false
+        iv_21.isEnabled = false
+        iv_22.isEnabled = false
+        iv_23.isEnabled = false
+        iv_24.isEnabled = false
+        iv_31.isEnabled = false
+        iv_32.isEnabled = false
+        iv_33.isEnabled = false
+        iv_34.isEnabled = false
+    }
+
+    private fun sonImagenesIguales() {
+        if (imagen1.drawable.constantState == imagen2.drawable.constantState) {
+            sonido("success")
+            if (turno == 1) {
+                puntosj1++
+                tv_j1.text = "J1: $puntosj1"
+            } else if (turno == 2) {
+                puntosj2++
+                tv_j2.text = "J2: $puntosj2"
+            }
+            imagen1.isEnabled = false
+            imagen2.isEnabled = false
+            imagen1.tag = ""
+            imagen2.tag = ""
+        } else {
+            sonido("no")
+            imagen1.setImageResource(R.drawable.tibu1)
+            imagen2.setImageResource(R.drawable.tibu1)
+            if (turno == 1) {
+                turno = 2
+                tv_j1.setTextColor(Color.GRAY)
+                tv_j2.setTextColor(Color.WHITE)
+            } else if (turno == 2) {
+                turno = 1
+                tv_j1.setTextColor(Color.WHITE)
+                tv_j2.setTextColor(Color.GRAY)
+            }
+        }
+
+        iv_11.isEnabled = !iv_11.tag.toString().isEmpty()
+        iv_12.isEnabled = !iv_12.tag.toString().isEmpty()
+        iv_13.isEnabled = !iv_13.tag.toString().isEmpty()
+        iv_14.isEnabled = !iv_14.tag.toString().isEmpty()
+        iv_21.isEnabled = !iv_21.tag.toString().isEmpty()
+        iv_22.isEnabled = !iv_22.tag.toString().isEmpty()
+        iv_23.isEnabled = !iv_23.tag.toString().isEmpty()
+        iv_24.isEnabled = !iv_24.tag.toString().isEmpty()
+        iv_31.isEnabled = !iv_31.tag.toString().isEmpty()
+        iv_32.isEnabled = !iv_32.tag.toString().isEmpty()
+        iv_33.isEnabled = !iv_33.tag.toString().isEmpty()
+        iv_34.isEnabled = !iv_34.tag.toString().isEmpty()
+
+        verificarFinJuego()
+    }
+
+    private fun verificarFinJuego() {
+        if(
+            iv_11.tag.toString().isEmpty() &&
+            iv_12.tag.toString().isEmpty() &&
+            iv_13.tag.toString().isEmpty() &&
+            iv_14.tag.toString().isEmpty() &&
+            iv_21.tag.toString().isEmpty() &&
+            iv_22.tag.toString().isEmpty() &&
+            iv_23.tag.toString().isEmpty() &&
+            iv_24.tag.toString().isEmpty() &&
+            iv_31.tag.toString().isEmpty() &&
+            iv_32.tag.toString().isEmpty() &&
+            iv_33.tag.toString().isEmpty() &&
+            iv_34.tag.toString().isEmpty()
+        ){
+            mp.stop()
+            mp.release()
+            sonido("win")
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("FIN DEL JUEGO")
+                .setMessage("PUNTAJE \nJ1: "+puntosj1 +"\nJ2 "+puntosj2)
+                .setCancelable(false)
+                .setPositiveButton("Nuevo Juego", DialogInterface.OnClickListener{
+                        dialogInterface, i -> val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                })
+                .setNegativeButton("Salir", DialogInterface.OnClickListener{
+                        dialogInterface, i ->  finish()
+                })
+            val ad = builder.create()
+            ad.show()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if(mpFondo.isPlaying){
+            mpFondo.stop()
+            mpFondo.release()
+        }
 
     }
 
 
 }
+
+
+
+
+
